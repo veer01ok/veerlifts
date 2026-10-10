@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" fill="#0B0A09"/>
+  <rect x="5" y="5" width="54" height="54" fill="none" stroke="#8A2F0C" stroke-width="2.5"/>
+  <text x="32" y="34" fill="#E2571F" font-family="Archivo, Helvetica, Arial, sans-serif"
+        font-size="27" font-weight="900" text-anchor="middle" dominant-baseline="central"
+        letter-spacing="-1.5">RV</text>
+</svg>

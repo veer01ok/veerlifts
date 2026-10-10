@@ -1,0 +1,115 @@
+/* ============================================================
+   Typographic scale.
+   Display = Archivo, pulled narrow and tight for headlines.
+   Body    = Inter at a comfortable measure, never tracked out.
+   Mono    = JetBrains Mono, uppercase, only for metadata.
+   ============================================================ */
+
+.label {
+  font-family: var(--font-mono);
+  font-size: var(--t-label);
+  font-weight: 500;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin: 0;
+}
+.label--accent { color: var(--accent-hi); }
+.label--ink    { color: var(--ink-2); }
+.label--tight  { letter-spacing: 0.18em; }
+
+/* A label with a leading orange tick — the guide's signature mark. */
+.label--mark { display: inline-flex; align-items: center; gap: 2.2mm; }
+.label--mark::before {
+  content: "";
+  width: 4mm; height: 1px;
+  background: var(--accent);
+  flex: none;
+}
+
+.display, .hero-title, .h1, .h2, .h3, .num {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-stretch: 82%;
+  line-height: var(--lh-tight);
+  letter-spacing: -0.012em;
+  color: var(--ink);
+  margin: 0;
+  text-wrap: balance;
+}
+
+.display {
+  font-size: var(--t-display);
+  line-height: 0.92;
+  letter-spacing: -0.028em;
+  font-stretch: 78%;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+.hero-title {
+  font-size: var(--t-hero);
+  line-height: 0.95;
+  letter-spacing: -0.022em;
+  font-weight: 900;
+  font-stretch: 78%;
+  text-transform: uppercase;
+}
+.h1 { font-size: var(--t-h1); line-height: 1.02; letter-spacing: -0.018em; font-weight: 900; text-transform: uppercase; }
+.h2 { font-size: var(--t-h2); line-height: 1.08; letter-spacing: -0.014em; }
+.h3 { font-size: var(--t-h3); line-height: 1.18; letter-spacing: -0.006em; }
+
+.accent  { color: var(--accent); }
+.muted   { color: var(--ink-2); }
+.faint   { color: var(--ink-3); }
+
+/* Body copy. Measure is capped so lines stay readable on A4. */
+p, .body { margin: 0 0 var(--baseline); color: var(--ink-2); max-width: 62ch; }
+p:last-child, .body:last-child { margin-bottom: 0; }
+.body--lg   { font-size: var(--t-body-lg); line-height: 1.55; color: var(--ink-2); }
+.body--sm   { font-size: var(--t-small); line-height: 1.55; }
+.body--wide { max-width: none; }
+.body strong, p strong { color: var(--ink); font-weight: 600; }
+.body em, p em { color: var(--ink); font-style: italic; }
+
+.lede {
+  font-family: var(--font-display);
+  font-stretch: 92%;
+  font-weight: 400;
+  font-size: 5mm;
+  line-height: 1.38;
+  letter-spacing: -0.008em;
+  color: var(--ink);
+  max-width: 46ch;
+  margin: 0;
+}
+
+/* Big editorial numeral — section heroes, module indices. */
+.num {
+  font-weight: 900;
+  font-stretch: 70%;
+  letter-spacing: -0.05em;
+  line-height: 0.8;
+  font-variant-numeric: tabular-nums;
+}
+
+.rule       { height: 1px; background: var(--rule); border: 0; margin: 0; }
+.rule--strong { height: 1px; background: var(--rule-strong); }
+.rule--accent { height: 1.4px; background: var(--accent); }
+.rule--short  { width: 16mm; }
+
+.figcap {
+  font-family: var(--font-body);
+  font-size: 2.6mm;
+  line-height: 1.5;
+  letter-spacing: 0;
+  color: var(--ink-4);
+  max-width: 132mm;
+}
+.figcap b {
+  font-family: var(--font-mono);
+  font-size: var(--t-micro);
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}

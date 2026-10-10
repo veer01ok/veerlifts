@@ -1,0 +1,67 @@
+/* ============================================================
+   STILL TRAINING. STILL STUCK. — design tokens
+   Warm near-black + off-white + restrained burnt orange.
+   Orange is reserved for: priority, key insight, progress,
+   required action, section identity. Never a full card fill.
+   ============================================================ */
+
+:root {
+  /* --- surface ------------------------------------------------ */
+  --paper:        #0B0A09;   /* page ground, warm near-black      */
+  --paper-2:      #100E0D;   /* section hero ground, one step up  */
+  --surface:      #141211;   /* card / module ground              */
+  --surface-2:    #191614;   /* nested cell, table stripe         */
+  --surface-lift: #1F1B18;   /* hover / emphasis cell             */
+
+  /* --- rules -------------------------------------------------- */
+  --rule:         rgba(242, 239, 234, 0.09);  /* hairline         */
+  --rule-strong:  rgba(242, 239, 234, 0.18);  /* structural       */
+  --rule-faint:   rgba(242, 239, 234, 0.05);  /* grid, texture    */
+
+  /* --- text --------------------------------------------------- */
+  --ink:          #F2EFEA;   /* primary, off-white                */
+  --ink-2:        #A8A199;   /* secondary body / warm gray        */
+  --ink-3:        #736C64;   /* metadata, captions, footers       */
+  --ink-4:        #4A443E;   /* disabled, decorative numerals     */
+
+  /* --- accent ------------------------------------------------- */
+  --accent:       #E2571F;   /* burnt orange, the only chroma     */
+  --accent-hi:    #FF6E33;   /* small type on dark needs the lift */
+  --accent-deep:  #8A2F0C;   /* rules, low-key structure          */
+  --accent-wash:  rgba(226, 87, 31, 0.10);
+  --accent-wash-2:rgba(226, 87, 31, 0.05);
+  --on-accent:    #140B06;   /* text on a solid orange chip       */
+
+  /* --- semantic (used sparingly, never decorative) ------------ */
+  --yes:          #7FA46B;   /* "do this" / worth it              */
+  --no:           #9A5750;   /* "stop this" / not worth it        */
+
+  /* --- type --------------------------------------------------- */
+  --font-display: 'Archivo', 'Archivo Narrow', 'Helvetica Neue', Arial, sans-serif;
+  --font-body:    'Inter', 'Helvetica Neue', Arial, sans-serif;
+  --font-mono:    'JetBrainsMono', 'SFMono-Regular', Consolas, monospace;
+
+  /* Display sizes are mm-based so print and screen agree.        */
+  --t-display:    26mm;   /* cover title                          */
+  --t-hero:       15mm;   /* section hero headline                */
+  --t-h1:         9.2mm;  /* page headline                        */
+  --t-h2:         6.2mm;  /* module headline                      */
+  --t-h3:         4.4mm;  /* sub-head                             */
+  --t-body:       3.5mm;  /* ~9.9pt — comfortable at A4           */
+  --t-body-lg:    4.0mm;
+  --t-small:      3.0mm;
+  --t-label:      2.35mm; /* tracked uppercase mono metadata      */
+  --t-micro:      2.0mm;
+
+  --lh-body:      1.62;
+  --lh-tight:     1.24;
+
+  /* --- page geometry ------------------------------------------ */
+  --page-w:       210mm;
+  --page-h:       297mm;
+  --margin-x:     17mm;
+  --margin-t:     16mm;
+  --margin-b:     14mm;
+  --col-gap:      5mm;
+  --baseline:     6mm;    /* vertical rhythm unit                 */
+}
