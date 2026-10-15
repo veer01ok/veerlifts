@@ -500,85 +500,43 @@ h1, h2, .h, .lede-big, .six li { overflow-wrap: break-word; }
   .under { margin-top: 0; }
 }
 
+
 /* ============================================================
-   The discount code.
-   Folded away until asked for — a code field sitting open next to
-   the price invites everyone to go hunting for one, and most
-   people do not have it.
+   The opening price.
+   Both numbers are shown: the list price struck through, then
+   what it actually costs. The saving is the argument.
    ============================================================ */
 
-.promo { margin-top: 14px; }
-
-.promo__open {
-  background: none; border: 0; padding: 0;
-  font-family: var(--font-mono);
-  font-size: var(--t-micro);
-  letter-spacing: 0.16em; text-transform: uppercase;
-  color: var(--ink-4);
-  cursor: pointer;
-  border-bottom: 1px solid transparent;
-  touch-action: manipulation;
-}
-.promo__open:hover { color: var(--ink-3); border-color: var(--rule-strong); }
-.promo__open[hidden] { display: none; }
-
-.promo__row { display: flex; gap: 8px; margin-top: 10px; }
-.promo__label {
-  position: absolute; width: 1px; height: 1px;
-  overflow: hidden; clip-path: inset(50%); white-space: nowrap;
-}
-.promo__input {
-  flex: 1 1 auto; min-width: 0;
-  background: var(--paper);
-  border: 1px solid var(--rule-strong);
-  color: var(--ink);
-  font-family: var(--font-mono);
-  font-size: 14px;
-  letter-spacing: 0.1em; text-transform: uppercase;
-  padding: 13px 14px;
-  border-radius: 0;
-  -webkit-appearance: none; appearance: none;
-}
-.promo__input:focus { border-color: var(--accent); outline: none; }
-.promo__input::placeholder { color: var(--ink-4); letter-spacing: 0.1em; }
-
-.promo__go {
-  flex: none;
-  padding: 13px 18px;
-  border: 1px solid var(--rule-strong);
-  background: none;
-  color: var(--ink-2);
-  font-family: var(--font-mono);
-  font-size: 11px; font-weight: 500;
-  letter-spacing: 0.18em; text-transform: uppercase;
-  cursor: pointer;
-  touch-action: manipulation;
-  border-radius: 0;
-  -webkit-appearance: none; appearance: none;
-}
-.promo__go:hover { border-color: var(--accent); color: var(--accent-hi); }
-
-.promo__msg { margin: 9px 0 0; font-size: 13.5px; line-height: 1.45; color: var(--ink-3); }
-.promo__msg.is-ok { color: var(--accent-hi); }
-.promo__msg.is-no { color: var(--no); }
-.promo__msg:empty { display: none; }
-
-/* The old price stays visible, struck through — a number that
-   simply changes looks like a trick. */
+/* Beside the big numeral in the cover block. */
 .price__was {
   display: inline-block;
-  margin-left: 12px;
+  margin-right: 12px;
   font-family: var(--font-display);
   font-weight: 800; font-stretch: 78%;
-  font-size: 0.4em;
+  /* a sibling of the numeral, not a child, so em would resolve
+     against the parent block (16px) rather than the price */
+  font-size: clamp(21px, 2.8vw, 31px);
+  line-height: 1;
   color: var(--ink-4);
   text-decoration: line-through;
-  vertical-align: 0.45em;
+  text-decoration-thickness: 2px;
+  vertical-align: 0.5em;
 }
+.price__was:empty { display: none; margin: 0; }
+
+/* Inside the buttons, where the type is mono and much smaller. */
+.btn__was {
+  margin-right: 8px;
+  color: rgba(20, 11, 6, 0.55);
+  text-decoration: line-through;
+  text-decoration-thickness: 1.5px;
+}
+.btn__was:empty { display: none; margin: 0; }
+
+/* The sticky bar carries the same pair, so the saving follows the
+   reader down the page rather than only showing at the top. */
+.sticky .btn__was { color: rgba(20, 11, 6, 0.55); }
 
 @media (max-width: 760px) {
-  /* The phone's buy button is the sticky bar, so the code field
-     sits directly under the price instead. */
-  .promo { margin-top: 4px; }
-  .promo__input { font-size: 16px; }   /* iOS zooms anything smaller */
+  .price__was { font-size: 21px; margin-right: 10px; }
 }
