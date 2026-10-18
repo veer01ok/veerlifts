@@ -157,6 +157,25 @@ a { color: var(--accent-hi); -webkit-tap-highlight-color: transparent; }
 .buy:hover { background: var(--accent-hi); }
 .buy:active { transform: translateY(1px); }
 
+/* The discount code. A dashed rule rather than a filled chip: it sits
+   directly under a solid orange button, and two filled blocks stacked
+   read as two competing buttons. */
+.promo {
+  margin: 12px 0 0;
+  padding: 9px 14px;
+  border: 1px dashed var(--accent-deep);
+  font-family: var(--font-mono); font-size: 14px; letter-spacing: .04em;
+  color: var(--ink-3);
+}
+.promo b {
+  color: var(--accent-hi); font-weight: 500;
+  letter-spacing: .1em;
+}
+.promo span { color: var(--ink-2); }
+/* [hidden] carries only user-agent weight, and the display above
+   outranks it. Without this the hidden line still shows. */
+.promo[hidden] { display: none; }
+
 .under {
   margin: 14px 0 0;
   font-size: 14px; line-height: 1.5;
