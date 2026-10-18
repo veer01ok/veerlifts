@@ -167,11 +167,11 @@ a { color: var(--accent-hi); -webkit-tap-highlight-color: transparent; }
   font-family: var(--font-mono); font-size: 14px; letter-spacing: .04em;
   color: var(--ink-3);
 }
-.promo b {
-  color: var(--accent-hi); font-weight: 500;
-  letter-spacing: .1em;
+.promo a {
+  color: var(--ink-2); text-decoration: none;
+  display: block;
 }
-.promo span { color: var(--ink-2); }
+.promo a:hover { color: var(--accent-hi); }
 /* [hidden] carries only user-agent weight, and the display above
    outranks it. Without this the hidden line still shows. */
 .promo[hidden] { display: none; }
