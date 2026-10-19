@@ -25,6 +25,7 @@
   --t-small:  15px;
   --t-label:  13px;
   --t-micro:  12px;
+  --band-h:   40px;   /* the running band above the cover, measured */
   --lh-body:  1.6;
   --gutter:   clamp(22px, 5vw, 64px);
   --wrap:     980px;
@@ -82,9 +83,13 @@ a { color: var(--accent-hi); -webkit-tap-highlight-color: transparent; }
   max-width: 1240px;
   margin: 0 auto;
   padding: clamp(28px, 5vw, 64px) var(--gutter);
-  min-height: 100vh;
+  /* The running band sits above this, so a full 100vh here would
+     push the cover past the first screen and start the page on a
+     scroll. --band-h is measured from the band's own metrics:
+     14px mono at 1.6, 9px padding either side, one hairline. */
+  min-height: calc(100vh - var(--band-h));
 }
-@supports (height: 100dvh) { .cover { min-height: 100dvh; } }
+@supports (height: 100dvh) { .cover { min-height: calc(100dvh - var(--band-h)); } }
 
 .cover__img {
   width: 100%;
@@ -180,10 +185,8 @@ a { color: var(--accent-hi); -webkit-tap-highlight-color: transparent; }
    text happens to be — no chasing a moving target. */
 .promo {
   display: block;
-  margin: 12px 0 0;
   padding: 9px 0;
   overflow: hidden;
-  border-top: 1px dashed var(--accent-deep);
   border-bottom: 1px dashed var(--accent-deep);
   text-decoration: none;
 }
