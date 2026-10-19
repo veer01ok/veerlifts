@@ -186,12 +186,6 @@ a { color: var(--accent-hi); -webkit-tap-highlight-color: transparent; }
    outranks it. Without this the hidden line still shows. */
 .promo[hidden] { display: none; }
 
-.under {
-  margin: 14px 0 0;
-  font-size: 14px; line-height: 1.5;
-  color: var(--ink-4);
-}
-
 /* ============================================================
    2. Proof, then what you get
    ============================================================ */
@@ -570,7 +564,6 @@ h1, h2, .h, .lede-big, .six li { overflow-wrap: break-word; }
    script at all. */
 @media (max-width: 760px) {
   .cover .buy { display: none; }
-  .under { margin-top: 0; }
 }
 
 
