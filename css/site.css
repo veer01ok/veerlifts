@@ -16,11 +16,15 @@
    exact. A screen has no opinion about millimetres, so the type
    scale is restated here in px. */
 
+/* Four steps, each a real step. The label and micro sizes used to
+   be 11px and 10.5px — half a pixel apart, which is not a scale,
+   and both below the size at which tracked-out uppercase mono is
+   comfortable on a phone. Nothing here now goes under 12px. */
 :root {
   --t-body:   17px;
   --t-small:  15px;
-  --t-label:  11px;
-  --t-micro:  10.5px;
+  --t-label:  13px;
+  --t-micro:  12px;
   --lh-body:  1.6;
   --gutter:   clamp(22px, 5vw, 64px);
   --wrap:     980px;
@@ -123,7 +127,12 @@ a { color: var(--accent-hi); -webkit-tap-highlight-color: transparent; }
 
 /* The price is the largest thing on the page after the cover
    itself. Nothing is gained by being coy about it. */
-.price { display: flex; align-items: baseline; gap: 16px; margin-bottom: 20px; }
+/* The meta sits beside the numerals when there is room and drops
+   under them when there is not. Without the wrap it was squeezed
+   into whatever was left — about 150px — and broke two lines of
+   copy into four ragged ones right next to the biggest thing on
+   the page. */
+.price { display: flex; align-items: baseline; flex-wrap: wrap; gap: 10px 16px; margin-bottom: 20px; }
 .price__num {
   font-family: var(--font-display);
   font-weight: 900; font-stretch: 74%;
@@ -133,10 +142,11 @@ a { color: var(--accent-hi); -webkit-tap-highlight-color: transparent; }
   font-variant-numeric: tabular-nums;
 }
 .price__meta {
+  flex: 1 1 210px;   /* beside the numerals, or its own line */
   font-family: var(--font-mono);
   font-size: var(--t-micro);
-  line-height: 1.8;
-  letter-spacing: 0.16em;
+  line-height: 1.7;
+  letter-spacing: 0.1em;   /* 0.16em cost it roughly a word per line */
   text-transform: uppercase;
   color: var(--ink-3);
 }
