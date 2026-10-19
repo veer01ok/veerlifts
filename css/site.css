@@ -195,7 +195,9 @@ a { color: var(--accent-hi); -webkit-tap-highlight-color: transparent; }
 .promo__track span,
 .promo__track i {
   font-family: var(--font-mono); font-size: 14px;
-  letter-spacing: .06em; white-space: nowrap; font-style: normal;
+  font-weight: 700;            /* a real cut: fonts.css loads 400/500/700 */
+  text-transform: uppercase;
+  letter-spacing: .08em; white-space: nowrap; font-style: normal;
 }
 .promo__track span { color: var(--ink-2); padding: 0 16px; }
 .promo__track i { color: var(--accent); }
