@@ -25,7 +25,7 @@
   --t-small:  15px;
   --t-label:  13px;
   --t-micro:  12px;
-  --band-h:   40px;   /* the running band above the cover, measured */
+  --band-h:   48px;   /* the running band above the cover, measured */
   --lh-body:  1.6;
   --gutter:   clamp(22px, 5vw, 64px);
   --wrap:     980px;
@@ -183,11 +183,16 @@ a { color: var(--accent-hi); -webkit-tap-highlight-color: transparent; }
 
    The anchor itself is the band, so a click lands wherever the
    text happens to be — no chasing a moving target. */
+/* A quiet strip, not a second buy bar. A solid orange band this
+   high on the page competed with the button that actually sells
+   the guide; the type carries it instead, and the orange is spent
+   only on the separators. */
 .promo {
   display: block;
-  padding: 9px 0;
+  padding: 11px 0;
   overflow: hidden;
-  border-bottom: 1px dashed var(--accent-deep);
+  background: var(--paper-2);
+  border-bottom: 1px solid var(--accent-deep);
   text-decoration: none;
 }
 .promo__track {
@@ -195,15 +200,19 @@ a { color: var(--accent-hi); -webkit-tap-highlight-color: transparent; }
   width: max-content;        /* never let flex squeeze the copies */
   animation: promoRun 30s linear infinite;
 }
+/* The display face, not the mono: at 900 it is far heavier than
+   any weight the mono has, which is what carries a band this
+   colour. */
 .promo__track span,
 .promo__track i {
-  font-family: var(--font-mono); font-size: 14px;
-  font-weight: 700;            /* a real cut: fonts.css loads 400/500/700 */
+  font-family: var(--font-display);
+  font-weight: 900; font-stretch: 86%;
+  font-size: 17px;
   text-transform: uppercase;
-  letter-spacing: .08em; white-space: nowrap; font-style: normal;
+  letter-spacing: .01em; white-space: nowrap; font-style: normal;
 }
-.promo__track span { color: var(--ink-2); padding: 0 16px; }
-.promo__track i { color: var(--accent); }
+.promo__track span { color: var(--ink); padding: 0 16px; }
+.promo__track i { color: var(--accent); }   /* the only colour in the strip */
 
 @keyframes promoRun { to { transform: translateX(-50%); } }
 
