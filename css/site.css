@@ -465,15 +465,22 @@ a { color: var(--accent-hi); -webkit-tap-highlight-color: transparent; }
 .intro-ready .intro {
   position: fixed; inset: 0; z-index: 90;
   display: grid; place-items: center;
+  padding: 0 20px;   /* the wordmark never touches a phone's edge */
   background: var(--paper);
   animation: introOut .46s cubic-bezier(.76,0,.24,1) var(--intro-out) both;
 }
+/* The wordmark, split the way the logo splits it. Nine characters
+   of heavy display type is wide, so the size is capped against the
+   viewport and the whole thing is kept on one line — "VEER" above
+   "LIFTS" would read as two words rather than one mark. */
 .intro-ready .intro__mark {
   font-family: var(--font-display);
-  font-weight: 900; font-size: clamp(60px, 15vw, 112px);
-  letter-spacing: -.07em; color: var(--accent);
+  font-weight: 900; font-size: clamp(30px, 10.5vw, 84px);
+  letter-spacing: -.02em; text-transform: uppercase;
+  white-space: nowrap; color: var(--ink);
   animation: markIn .6s cubic-bezier(.22,.61,.36,1) .04s both;
 }
+.intro-ready .intro__mark b { font-weight: inherit; color: var(--accent); }
 
 @keyframes markIn {
   from { opacity: 0; transform: scale(.9); }
