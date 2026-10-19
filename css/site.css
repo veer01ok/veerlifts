@@ -442,8 +442,12 @@ a { color: var(--accent-hi); -webkit-tap-highlight-color: transparent; }
     gap: 24px;
     min-height: 0;
     padding-top: 20px;
-    padding-bottom: 38px;
+    /* The buy button is hidden on a phone, so the price is the last
+       thing in the column. Its own margin, this padding and the next
+       section's padding used to stack into 112px of nothing. */
+    padding-bottom: 6px;
   }
+  .cover .price { margin-bottom: 0; }
   .cover__side { max-width: none; }
   .eyebrow { margin-bottom: 16px; }
   .lede-big { font-size: 19px; margin-bottom: 22px; }
@@ -451,6 +455,9 @@ a { color: var(--accent-hi); -webkit-tap-highlight-color: transparent; }
   .price__num { font-size: 54px; }
 
   .meat, .close { padding-block: 44px; }
+  /* The cover above already ends tight, so this edge carries the
+     whole section break on its own and does not need the full 44. */
+  .meat { padding-top: 34px; }
   .h { font-size: clamp(27px, 8vw, 34px); margin: 38px 0 18px; }
 
   .receipts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
