@@ -170,18 +170,43 @@ a { color: var(--accent-hi); -webkit-tap-highlight-color: transparent; }
 /* The discount code. A dashed rule rather than a filled chip: it sits
    directly under a solid orange button, and two filled blocks stacked
    read as two competing buttons. */
+/* A running band, the same mechanism as the Aesthetic Protocol
+   site: the line is repeated, the track holds two identical
+   halves, and the animation slides it exactly -50%. At that point
+   the second half sits precisely where the first began, so the
+   reset is invisible and the loop never seams.
+
+   The anchor itself is the band, so a click lands wherever the
+   text happens to be — no chasing a moving target. */
 .promo {
-  margin: 12px 0 0;
-  padding: 9px 14px;
-  border: 1px dashed var(--accent-deep);
-  font-family: var(--font-mono); font-size: 14px; letter-spacing: .04em;
-  color: var(--ink-3);
-}
-.promo a {
-  color: var(--ink-2); text-decoration: none;
   display: block;
+  margin: 12px 0 0;
+  padding: 9px 0;
+  overflow: hidden;
+  border-top: 1px dashed var(--accent-deep);
+  border-bottom: 1px dashed var(--accent-deep);
+  text-decoration: none;
 }
-.promo a:hover { color: var(--accent-hi); }
+.promo__track {
+  display: flex;
+  width: max-content;        /* never let flex squeeze the copies */
+  animation: promoRun 30s linear infinite;
+}
+.promo__track span,
+.promo__track i {
+  font-family: var(--font-mono); font-size: 14px;
+  letter-spacing: .06em; white-space: nowrap; font-style: normal;
+}
+.promo__track span { color: var(--ink-2); padding: 0 16px; }
+.promo__track i { color: var(--accent); }
+
+@keyframes promoRun { to { transform: translateX(-50%); } }
+
+/* Reading a moving line is harder than reading a still one, so it
+   stops under the cursor. */
+.promo:hover .promo__track { animation-play-state: paused; }
+.promo:hover .promo__track span { color: var(--accent-hi); }
+
 /* [hidden] carries only user-agent weight, and the display above
    outranks it. Without this the hidden line still shows. */
 .promo[hidden] { display: none; }
@@ -521,6 +546,8 @@ a { color: var(--accent-hi); -webkit-tap-highlight-color: transparent; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .intro { display: none !important; }
+  /* Stopped at the start, so the first copy is the one on show. */
+  .promo__track { animation: none !important; }
   .intro-ready .cover__img,
   .intro-ready .cover__side > * { animation: none !important; }
   .reveal-ready .reveal { opacity: 1; transform: none; transition: none; }
