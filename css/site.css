@@ -442,13 +442,55 @@ a { color: var(--accent-hi); -webkit-tap-highlight-color: transparent; }
 @keyframes rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
 @keyframes settle { from { opacity: 0; transform: scale(1.03); } to { opacity: 1; transform: none; } }
 
-.intro-ready .cover__img { animation: settle 1.2s cubic-bezier(.22,.61,.36,1) both; }
+/* --- the arrival ----------------------------------------------
+   The mark, then the page. It lasts 1.2s, which is the most a
+   sales page can spend before a stranger from Instagram decides
+   nothing is happening.
+
+   The overlay is display:none by default and only appears under
+   .intro-ready, which the inline head script adds when scripts
+   run and motion is welcome. So JS off, or reduced motion, means
+   no overlay at all — and no script is needed to clear it either,
+   because the animation ends on visibility:hidden and holds
+   there. Nothing here can strand the page behind a black screen. */
+
+:root { --intro-out: .72s; }   /* when the overlay starts leaving */
+
+.intro { display: none; }
+
+.intro-ready .intro {
+  position: fixed; inset: 0; z-index: 90;
+  display: grid; place-items: center;
+  background: var(--paper);
+  animation: introOut .46s cubic-bezier(.76,0,.24,1) var(--intro-out) both;
+}
+.intro-ready .intro__mark {
+  font-family: var(--font-display);
+  font-weight: 900; font-size: clamp(60px, 15vw, 112px);
+  letter-spacing: -.07em; color: var(--accent);
+  animation: markIn .6s cubic-bezier(.22,.61,.36,1) .04s both;
+}
+
+@keyframes markIn {
+  from { opacity: 0; transform: scale(.9); }
+  to   { opacity: 1; transform: none; }
+}
+/* Ends hidden, not merely transparent: a transparent overlay still
+   swallows the first tap on the buy button. */
+@keyframes introOut {
+  from { opacity: 1; }
+  to   { opacity: 0; visibility: hidden; }
+}
+
+/* The cover waits for the overlay to start clearing, so its own
+   settle is seen rather than played behind a black screen. */
+.intro-ready .cover__img { animation: settle 1.2s cubic-bezier(.22,.61,.36,1) var(--intro-out) both; }
 .intro-ready .cover__side > * { animation: rise .7s cubic-bezier(.22,.61,.36,1) both; }
-.intro-ready .cover__side > :nth-child(1) { animation-delay: .12s; }
-.intro-ready .cover__side > :nth-child(2) { animation-delay: .24s; }
-.intro-ready .cover__side > :nth-child(3) { animation-delay: .38s; }
-.intro-ready .cover__side > :nth-child(4) { animation-delay: .50s; }
-.intro-ready .cover__side > :nth-child(5) { animation-delay: .58s; }
+.intro-ready .cover__side > :nth-child(1) { animation-delay: calc(var(--intro-out) + .12s); }
+.intro-ready .cover__side > :nth-child(2) { animation-delay: calc(var(--intro-out) + .24s); }
+.intro-ready .cover__side > :nth-child(3) { animation-delay: calc(var(--intro-out) + .38s); }
+.intro-ready .cover__side > :nth-child(4) { animation-delay: calc(var(--intro-out) + .50s); }
+.intro-ready .cover__side > :nth-child(5) { animation-delay: calc(var(--intro-out) + .58s); }
 
 .reveal-ready .reveal { opacity: 0; transform: translateY(14px); }
 .reveal-ready .reveal.is-in {
@@ -462,10 +504,12 @@ a { color: var(--accent-hi); -webkit-tap-highlight-color: transparent; }
 @media print {
   .reveal-ready .reveal { opacity: 1 !important; transform: none !important; }
   .sticky { display: none !important; }
+  .intro { display: none !important; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
+  .intro { display: none !important; }
   .intro-ready .cover__img,
   .intro-ready .cover__side > * { animation: none !important; }
   .reveal-ready .reveal { opacity: 1; transform: none; transition: none; }
